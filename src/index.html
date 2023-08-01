@@ -8,7 +8,205 @@
     <link rel="stylesheet" href="./index.css">
   </head>
   <body>
+    <div class="flex">
+      <aside class="flex flex-col justify-start items-center w-2/12 h-1/2 bg-black text-white min-h-screen">
+        <span class="text-center my-20">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+              </path>
+          </svg>
+        </span>
+        <nav class="flex my-10 flex-col items-center justify-center text-3xl font-mono uppercase">
+          <div class="flex items-center my-10  w-11/12" id="today">
+            <span class="text-left mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+            <span class="">
+              TODAY
+            </span>
+          </div>
+          <div class="flex items-center my-10 w-11/12" id="add">
+            <span class="text-left mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+            <span class="">
+              Important
+            </span>
+          </div>
+          <div class="flex items-center my-10 w-11/12" id="calendar">
+            <span class="text-left mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+            <span class="">
+              CALENDAR
+            </span>
+          </div>
+        </nav>
+      </aside>
+      <!-- <main class="main w-10/12 flex flex-col items-center" id="todayMain">
+        <div class="flex justify-between items-center w-3/6">
+          <div style="display:hidden;" class="w-1/12"></div>
+          <strong class="text-4xl my-10 uppercase text-center w-11/12 ">
+            Today
+          </strong>
+          <button class="bg-blue-900 text-white w-2/12 text-2xl rounded-xl text-center leading-normal">ADD</button>
+        </div>
+        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5 ">
+          
+          <li class="w-11/12 bg-white list-none p-0 m-5 text-3xl flex items-center p-5 rounded-xl">
+            <span class="text-left mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+            <span class="w-11/12">1</span>
+            <span class="text-right mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+          </li>
+          <li class="w-11/12 bg-white list-none p-0 m-5 text-3xl flex items-center p-5 rounded-xl">
+            <span class="text-left mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+            <span class="w-11/12">1</span>
+            <span class="text-right mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+          </li>
+        </section>
+      </main> -->
+      <!-- <main class="main w-10/12 flex flex-col items-center" id="importantMain">
+        <div class="flex justify-center items-center">
+          <strong class="text-4xl my-10 uppercase text-center w-11/12 ">
+            Important
+          </strong>
+        </div>
+        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5 ">
+          <li class="w-11/12 bg-white list-none p-0 m-5 text-3xl flex items-center p-5 rounded-xl">
+            <span class="text-left mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+            <span class="w-11/12">1</span>
+            <span class="text-right mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+          </li>
+          <li class="w-11/12 bg-white list-none p-0 m-5 text-3xl flex items-center p-5 rounded-xl">
+            <span class="text-left mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+            <span class="w-11/12">1</span>
+            <span class="text-right mx-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
+                  </path>
+              </svg>
+            </span>
+          </li>
+        </section>
+      </main> -->
 
+      <main class="main w-10/12 flex flex-col items-center" id="calenderMain">
+        <div class="flex justify-center items-center">
+          <strong class="text-4xl my-10 uppercase">
+            calendar
+          </strong>
+        </div>
+        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5 ">
+          <section class="flex text-center justify-between w-11/12 items-center">
+            <span class="text-2xl my-10 font-extrabold">
+              august
+            </span>
+            <div class="w-1/12 text-2xl flex justify-between w-2/12 text-center">
+              <button class="w-1/2 bg-blue-900 mx-1 rounded-xl"><</button>
+              <button class="w-1/2 bg-blue-900 mx-1  rounded-xl">></button>
+            </div>
+          </section>
+          <ul class="weeks list-none flex w-11/12 justify-around ">
+            <li>Sun</li>
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+          </ul>
+          <table class="days list-none w-11/12 text-center h-3/6">
+            <tr>
+              <td>1</td>
+              <td>2</li>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+              <td>13</td>
+              <td>14</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>16</td>
+              <td>17</td>
+              <td>18</td>
+              <td>19</td>
+              <td>20</td>
+              <td>21</td>
+            </tr>
+            <tr>
+              <td>22</td>
+              <td>23</td>
+              <td>24</td>
+              <td>25</td>
+              <td>26</td>
+              <td>27</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>30</td>
+              <td>31</td>
+              <td>31</td>
+
+            </tr>
+          </table>
+        </section>
+      </main>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>
