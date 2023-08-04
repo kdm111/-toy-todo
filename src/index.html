@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="flex">
-      <aside dir="ltr" class="flex flex-col justify-start items-center w-3/12 h-1/2 bg-black text-white min-h-screen rounded-s-3xl px-5">
+      <aside dir="ltr" class="flex flex-col justify-start items-center w-3/12 h-1/2 bg-black bg-blue-800 text-white min-h-screen rounded-s-3xl px-5">
         <div class="text-center my-20">
           <div class="rounded-full p-10 bg-white h-11/12 w-11/12 my-5">
           </div>
@@ -52,73 +52,38 @@
         </nav>
       </aside>
       <main class="main w-9/12 flex flex-col items-center rounded-e-3xl" id="todayMain">
-        <div class="flex justify-between items-center w-3/6">
+        <section class="flex justify-between items-center w-3/6">
           <div style="display:hidden;" class="w-1/12"></div>
           <strong class="text-4xl my-10 uppercase text-center w-11/12 ">
             Today
           </strong>
           <button class="bg-blue-900 text-white w-2/12 text-2xl rounded-xl text-center leading-normal" id="todoAddBtn">ADD</button>
-        </div>
+        </section>
         <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5" id="todayTodoList">
           <form class="w-11/12 bg-white p-0 m-5 text-3xl flex items-center p-5 rounded-xl" id="todoAddForm">
-            <span class="text-left mx-3">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                  </path>
-              </svg>
-            </span>
+            <input class="text-left mx-3 font-extrabold" type="checkbox" id="checkImportant">
             <input class="w-11/12 border-b border-gray-700" type="text" id="todoAddInput">
             <span class="text-right mx-3">
-              <button type="submit">Add</button>
+              <button type="submit">ADD</button>
             </span>
           </form>
         </section>
       </main>
       <main class="main w-9/12 flex flex-col items-center rounded-e-3xl" id="importantMain">
-        <div class="flex justify-center items-center">
+        <section class="flex justify-center items-center">
           <strong class="text-4xl my-10 uppercase text-center w-11/12 ">
             Important
           </strong>
-        </div>
-        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5 ">
-          <li class="w-11/12 bg-white list-none p-0 m-5 text-3xl flex items-center p-5 rounded-xl">
-            <span class="text-left mx-3">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                  </path>
-              </svg>
-            </span>
-            <span class="w-11/12">1</span>
-            <span class="text-right mx-3">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                  </path>
-              </svg>
-            </span>
-          </li>
-          <li class="w-11/12 bg-white list-none p-0 m-5 text-3xl flex items-center p-5 rounded-xl">
-            <span class="text-left mx-3">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                  </path>
-              </svg>
-            </span>
-            <span class="w-11/12">1</span>
-            <span class="text-right mx-3">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                  </path>
-              </svg>
-            </span>
-          </li>
+        </section>
+        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5" id="importantTodoList">
         </section>
       </main>
       <main dir="rtl" class="main w-9/12 flex flex-col items-center rounded-s-3xl" id="calenderMain">
-        <div class="flex justify-center items-center">
+        <section class="flex justify-center items-center">
           <strong class="text-4xl my-10 uppercase">
             calendar
           </strong>
-        </div>
+        </section>
         <section class="flex flex-col w-3/6 items-center bg-slate-400 h-4/6 p-5 ">
           <section class="flex justify-between w-11/12 items-center ">
             <span class="text-2xl my-10 font-extrabold uppercase">
