@@ -9,17 +9,20 @@ const importantTodoList = document.querySelector("#importantTodoList")
 const checkImportant = document.querySelector("#checkImportant")
 
 class Todo {
-  constructor(content , isImportant) {
+  constructor(content , isImportant, isDone) {
     this.content = content
     this.isImportant = isImportant
+    this.isDone = (isDone === undefined ? false : true)
   }
 }
 
 const todo1 = new Todo("잘 자기", true)
 const todo2 = new Todo("밥 먹기", false)
+const todo3 = new Todo("출근하기", true, true)
+
 
 let todayTodo = []
-todayTodo.push(todo1); todayTodo.push(todo2)
+todayTodo.push(todo1); todayTodo.push(todo2); todayTodo.push(todo3)
 let importantTodo = todayTodo.filter((el)=> {
   return el.isImportant === true
 })
@@ -31,6 +34,8 @@ const normalSpanStyle = ["mx-3", "p-2", "bg-yellow-500", "rounded-full"]
 const importantSpanStyle = ["mx-3", "p-2", "bg-red-500", "rounded-full"]
 const contentSpanStyle = ["w-11/12"]
 const checkSpanStyle = ["mx-3", "p-2", "bg-lime-500", "rounded-full"]
+const checkDoneStyle = ["mx-3", "p-2",  "bg-blue-500",  "rounded-full"]
+
 
 function showTodoList (todayTodo, todayTodoList) {
   for (let todo of todayTodo) {
@@ -54,9 +59,38 @@ function showTodoList (todayTodo, todayTodoList) {
     }
     contentSpan.innerText = todo.content
     const checkSpan = document.createElement("span")
-    for (let style of checkSpanStyle) {
-      checkSpan.classList.add(style)
+    checkSpan.type="checkbox";
+    if (todo.isDone === true) {
+      for (let style of checkDoneStyle) {
+        checkSpan.classList.add(style)
+        contentSpan.classList.add("line-through")
+      }
+    } else {
+      for (let style of checkSpanStyle) {
+        checkSpan.classList.add(style)
+      }
     }
+    checkSpan.addEventListener("click", (e) => {
+      if (e.target.classList.contains("bg-blue-500")) {
+        e.target.classList.remove("bg-blue-500")
+        e.target.classList.add("bg-lime-500")
+        for (let todo of todayTodo) {
+          if (e.target.previousSibling.innerText === todo.content) {
+            todo.isDone = false; break 
+          }
+        }
+      } else {
+        e.target.classList.remove("bg-lime-500")
+        e.target.classList.add("bg-blue-500")
+        for (let todo of todayTodo) {
+          if (e.target.previousSibling.innerText === todo.content) {
+            todo.isDone = true; break 
+          }
+        }
+      }
+      e.target.previousSibling.classList.toggle("line-through")
+      importantTodo = todayTodo.filter((el) => el.isImportant === true)
+    })
     newTodo.append(imgSpan, contentSpan, checkSpan)
     todayTodoList.append(newTodo)
   }
@@ -101,8 +135,6 @@ todoAddForm.addEventListener("submit", (e) => {
   blankList(todayTodoList)
   showTodoList(todayTodo, todayTodoList)
 })
-
-
 
 
 const navBtn = document.querySelectorAll(".navBtn")
