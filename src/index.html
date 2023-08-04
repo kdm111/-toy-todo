@@ -9,13 +9,12 @@
   </head>
   <body>
     <div class="flex">
-      <aside class="flex flex-col justify-start items-center w-2/12 h-1/2 bg-black text-white min-h-screen">
-        <span class="text-center my-20">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-              </path>
-          </svg>
-        </span>
+      <aside dir="ltr" class="flex flex-col justify-start items-center w-3/12 h-1/2 bg-black text-white min-h-screen rounded-s-3xl px-5">
+        <div class="text-center my-20">
+          <div class="rounded-full p-10 bg-white h-11/12 w-11/12 my-5">
+          </div>
+          <span >userId</span>
+        </div>
         <nav class="flex my-10 flex-col items-center justify-center text-3xl font-mono uppercase">
           <div class="flex items-center my-10  w-11/12" id="today">
             <span class="text-left mx-3">
@@ -24,7 +23,7 @@
                   </path>
               </svg>
             </span>
-            <span class="">
+            <span class="navBtn hover:cursor-pointer">
               TODAY
             </span>
           </div>
@@ -35,7 +34,7 @@
                   </path>
               </svg>
             </span>
-            <span class="">
+            <span class="navBtn hover:cursor-pointer">
               Important
             </span>
           </div>
@@ -46,55 +45,36 @@
                   </path>
               </svg>
             </span>
-            <span class="">
+            <span class="navBtn hover:cursor-pointer">
               CALENDAR
             </span>
           </div>
         </nav>
       </aside>
-      <!-- <main class="main w-10/12 flex flex-col items-center" id="todayMain">
+      <main class="main w-9/12 flex flex-col items-center rounded-e-3xl" id="todayMain">
         <div class="flex justify-between items-center w-3/6">
           <div style="display:hidden;" class="w-1/12"></div>
           <strong class="text-4xl my-10 uppercase text-center w-11/12 ">
             Today
           </strong>
-          <button class="bg-blue-900 text-white w-2/12 text-2xl rounded-xl text-center leading-normal">ADD</button>
+          <button class="bg-blue-900 text-white w-2/12 text-2xl rounded-xl text-center leading-normal" id="todoAddBtn">ADD</button>
         </div>
-        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5 ">
-          
-          <li class="w-11/12 bg-white list-none p-0 m-5 text-3xl flex items-center p-5 rounded-xl">
+        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5" id="todayTodoList">
+          <form class="w-11/12 bg-white p-0 m-5 text-3xl flex items-center p-5 rounded-xl" id="todoAddForm">
             <span class="text-left mx-3">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
                   </path>
               </svg>
             </span>
-            <span class="w-11/12">1</span>
+            <input class="w-11/12 border-b border-gray-700" type="text" id="todoAddInput">
             <span class="text-right mx-3">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                  </path>
-              </svg>
+              <button type="submit">Add</button>
             </span>
-          </li>
-          <li class="w-11/12 bg-white list-none p-0 m-5 text-3xl flex items-center p-5 rounded-xl">
-            <span class="text-left mx-3">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                  </path>
-              </svg>
-            </span>
-            <span class="w-11/12">1</span>
-            <span class="text-right mx-3">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
-                  </path>
-              </svg>
-            </span>
-          </li>
+          </form>
         </section>
-      </main> -->
-      <!-- <main class="main w-10/12 flex flex-col items-center" id="importantMain">
+      </main>
+      <main class="main w-9/12 flex flex-col items-center rounded-e-3xl" id="importantMain">
         <div class="flex justify-center items-center">
           <strong class="text-4xl my-10 uppercase text-center w-11/12 ">
             Important
@@ -132,17 +112,16 @@
             </span>
           </li>
         </section>
-      </main> -->
-
-      <main class="main w-10/12 flex flex-col items-center" id="calenderMain">
+      </main>
+      <main dir="rtl" class="main w-9/12 flex flex-col items-center rounded-s-3xl" id="calenderMain">
         <div class="flex justify-center items-center">
           <strong class="text-4xl my-10 uppercase">
             calendar
           </strong>
         </div>
-        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-5/6 p-5 ">
-          <section class="flex text-center justify-between w-11/12 items-center">
-            <span class="text-2xl my-10 font-extrabold">
+        <section class="flex flex-col w-3/6 items-center bg-slate-400 h-4/6 p-5 ">
+          <section class="flex justify-between w-11/12 items-center ">
+            <span class="text-2xl my-10 font-extrabold uppercase">
               august
             </span>
             <div class="w-1/12 text-2xl flex justify-between w-2/12 text-center">
@@ -150,15 +129,15 @@
               <button class="w-1/2 bg-blue-900 mx-1  rounded-xl">></button>
             </div>
           </section>
-          <ul class="weeks list-none flex w-11/12 justify-around ">
-            <li>Sun</li>
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
-          </ul>
+          <table class="weeks list-none w-11/12 text-center">
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </table>
           <table class="days list-none w-11/12 text-center h-3/6">
             <tr>
               <td>1</td>
@@ -203,7 +182,6 @@
               <td>31</td>
               <td></td>
               <td></td>
-
             </tr>
           </table>
         </section>
