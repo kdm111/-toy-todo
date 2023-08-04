@@ -27,8 +27,11 @@ let importantTodo = todayTodo.filter((el)=> {
   return el.isImportant === true
 })
 
+todoAddForm.style.display = "none"
 important.style.display = "none"
 calendar.style.display = "none"
+
+
 const todoStyle = ["w-11/12" ,"bg-white", "list-none", "p-0", "m-5", "text-3xl", "flex", "items-center", "p-5", "rounded-xl"]
 const normalSpanStyle = ["mx-3", "p-2", "bg-yellow-500", "rounded-full"]
 const importantSpanStyle = ["mx-3", "p-2", "bg-red-500", "rounded-full"]
@@ -102,10 +105,16 @@ showTodoList(importantTodo, importantTodoList)
 todoAddBtn.addEventListener("click", () => {
   if (todoAddForm.classList.contains("flex")) {
     todoAddForm.classList.remove("flex")
+    todoAddBtn.classList.remove("bg-gray-600", "text-base")
+    todoAddBtn.classList.add("bg-blue-900")
+    todoAddBtn.innerText = "ADD"
     todoAddForm.style.display = "none"
   } else {
     todoAddForm.classList.add("flex")
     todoAddForm.style.display = "flex"
+    todoAddBtn.classList.remove("bg-blue-900")
+    todoAddBtn.classList.add("bg-gray-600", "text-base")
+    todoAddBtn.innerText = "UNDO"
   }
 })
 
