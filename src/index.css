@@ -9,3 +9,8 @@
 .days li {
   width: calc(100% / 7);
 }
+
+#todoAddInput:focus {
+  outline: none;
+}
+
