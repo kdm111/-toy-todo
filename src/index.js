@@ -5,6 +5,7 @@ const todoAddBtn = document.querySelector("#todoAddBtn")
 const todoAddForm = document.querySelector("#todoAddForm")
 const todoAddInput = document.querySelector("#todoAddInput")
 const todayTodoList = document.querySelector("#todayTodoList")
+const importantTodoList = document.querySelector("#importantTodoList")
 
 class Todo {
   constructor(content , isImportant) {
@@ -18,7 +19,9 @@ const todo2 = new Todo("밥 먹기", false)
 
 let todayTodo = []
 todayTodo.push(todo1); todayTodo.push(todo2)
-
+let importantTodo = todayTodo.filter((el)=> {
+  return el.isImportant === true
+})
 important.style.display = "none"
 calendar.style.display = "none"
 
@@ -27,7 +30,7 @@ const imgSpanStyle = ["mx-3", "p-2", "bg-yellow-500", "rounded-full"]
 const contentSpanStyle = ["w-11/12"]
 const checkSpanStyle = ["mx-3", "p-2", "bg-lime-500", "rounded-full"]
 
-function showTodayTodoList () {
+function showTodoList (todayTodo, todayTodoList) {
   for (let todo of todayTodo) {
     const newTodo = document.createElement("li")
     for (let style of todoStyle) {
@@ -51,7 +54,9 @@ function showTodayTodoList () {
   }
 }
 
-showTodayTodoList()
+showTodoList(todayTodo, todayTodoList)
+showTodoList(importantTodo, importantTodoList)
+
 todoAddBtn.addEventListener("click", () => {
   if (todoAddForm.classList.contains("flex")) {
     todoAddForm.classList.remove("flex")
@@ -67,7 +72,9 @@ todoAddForm.addEventListener("submit", (e) => {
   const newTodo = new Todo(todoAddInput.value)
   todoAddInput.value = ""
   todayTodo.push(newTodo)
-  console.log(todayTodoList.leng)
+  importantTodo = todayTodo.filter((el)=> {
+    return (el.isImportant === true)
+  })
   let i = 0
   while (i < todayTodoList.childNodes.length) {
     let node = todayTodoList.childNodes[i]
@@ -77,8 +84,10 @@ todoAddForm.addEventListener("submit", (e) => {
       i += 1
     }
   }
-  showTodayTodoList()
+  showTodoList(todayTodo, todayTodoList)
 })
+
+
 
 
 const navBtn = document.querySelectorAll(".navBtn")
@@ -93,6 +102,16 @@ navBtn.forEach((el) => {
       important.style.display = "flex"
       calendar.style.display = "none"
       today.style.display = "none"
+      let i = 0
+      while (i < importantTodoList.childNodes.length) {
+        let node = importantTodoList.childNodes[i]
+        if (node.nodeName != "#text" && node.classList.contains("list-none")) {
+          node.remove()
+        } else {
+          i += 1
+        }
+      }
+      showTodoList(importantTodo, importantTodoList)
     } else if (tab === "CALENDAR") {
       important.style.display = "none"
       calendar.style.display = "flex"
