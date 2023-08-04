@@ -6,6 +6,7 @@ const todoAddForm = document.querySelector("#todoAddForm")
 const todoAddInput = document.querySelector("#todoAddInput")
 const todayTodoList = document.querySelector("#todayTodoList")
 const importantTodoList = document.querySelector("#importantTodoList")
+const checkImportant = document.querySelector("#checkImportant")
 
 class Todo {
   constructor(content , isImportant) {
@@ -22,11 +23,12 @@ todayTodo.push(todo1); todayTodo.push(todo2)
 let importantTodo = todayTodo.filter((el)=> {
   return el.isImportant === true
 })
+
 important.style.display = "none"
 calendar.style.display = "none"
-
 const todoStyle = ["w-11/12" ,"bg-white", "list-none", "p-0", "m-5", "text-3xl", "flex", "items-center", "p-5", "rounded-xl"]
-const imgSpanStyle = ["mx-3", "p-2", "bg-yellow-500", "rounded-full"]
+const normalSpanStyle = ["mx-3", "p-2", "bg-yellow-500", "rounded-full"]
+const importantSpanStyle = ["mx-3", "p-2", "bg-red-500", "rounded-full"]
 const contentSpanStyle = ["w-11/12"]
 const checkSpanStyle = ["mx-3", "p-2", "bg-lime-500", "rounded-full"]
 
@@ -37,8 +39,14 @@ function showTodoList (todayTodo, todayTodoList) {
       newTodo.classList.add(style)
     }
     const imgSpan = document.createElement("span")
-    for (let style of imgSpanStyle) {
-      imgSpan.classList.add(style)
+    if (todo.isImportant) {
+      for (let style of importantSpanStyle) {
+        imgSpan.classList.add(style)
+      }
+    } else {
+      for (let style of normalSpanStyle) {
+        imgSpan.classList.add(style)
+      }
     }
     const contentSpan = document.createElement("span")
     for (let style of contentSpanStyle) {
@@ -67,23 +75,30 @@ todoAddBtn.addEventListener("click", () => {
   }
 })
 
-todoAddForm.addEventListener("submit", (e) => {
-  e.preventDefault()
-  const newTodo = new Todo(todoAddInput.value)
-  todoAddInput.value = ""
-  todayTodo.push(newTodo)
-  importantTodo = todayTodo.filter((el)=> {
-    return (el.isImportant === true)
-  })
+function blankList(list) {
   let i = 0
-  while (i < todayTodoList.childNodes.length) {
-    let node = todayTodoList.childNodes[i]
+  while (i < list.childNodes.length) {
+    let node = list.childNodes[i]
     if (node.nodeName != "#text" && node.classList.contains("list-none")) {
       node.remove()
     } else {
       i += 1
     }
   }
+}
+
+todoAddForm.addEventListener("submit", (e) => {
+  e.preventDefault()
+  if (todoAddInput.value === '') {
+    return ;
+  }
+  const newTodo = new Todo(todoAddInput.value, checkImportant.checked)
+  todoAddInput.value = ""
+  todayTodo.push(newTodo)
+  importantTodo = todayTodo.filter((el) => {
+    return (el.isImportant === true)
+  })
+  blankList(todayTodoList)
   showTodoList(todayTodo, todayTodoList)
 })
 
@@ -102,15 +117,7 @@ navBtn.forEach((el) => {
       important.style.display = "flex"
       calendar.style.display = "none"
       today.style.display = "none"
-      let i = 0
-      while (i < importantTodoList.childNodes.length) {
-        let node = importantTodoList.childNodes[i]
-        if (node.nodeName != "#text" && node.classList.contains("list-none")) {
-          node.remove()
-        } else {
-          i += 1
-        }
-      }
+      blankList(importantTodoList)
       showTodoList(importantTodo, importantTodoList)
     } else if (tab === "CALENDAR") {
       important.style.display = "none"
