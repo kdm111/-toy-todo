@@ -13,12 +13,19 @@ class Todo {
     this.content = content
     this.isImportant = isImportant
     this.isDone = (isDone === undefined ? false : true)
+    const date = new Date()
+    this.year = date.getFullYear()
+    this.month = date.getMonth() + 1
+    this.date = date.getDate()
   }
 }
 
 const todo1 = new Todo("잘 자기", true)
+todo1.year = 2023; todo1.month = 8; todo1.date = 4
 const todo2 = new Todo("밥 먹기", false)
+todo2.year = 2023; todo2.month = 8; todo2.date = 5
 const todo3 = new Todo("출근하기", true, true)
+todo3.year = 2023; todo3.month = 8; todo3.date = 3
 
 
 let todayTodo = []
@@ -40,8 +47,8 @@ const checkSpanStyle = ["mx-3", "p-2", "bg-lime-500", "rounded-full"]
 const checkDoneStyle = ["mx-3", "p-2",  "bg-blue-500",  "rounded-full"]
 
 
-function showTodoList (todayTodo, todayTodoList) {
-  for (let todo of todayTodo) {
+function showTodoList (todoes, todoesList) {
+  for (let todo of todoes) {
     const newTodo = document.createElement("li")
     for (let style of todoStyle) {
       newTodo.classList.add(style)
@@ -82,6 +89,11 @@ function showTodoList (todayTodo, todayTodoList) {
             todo.isDone = false; break 
           }
         }
+        for (let todo of importantTodo) {
+          if (e.target.previousSibling.innerText === todo.content) {
+            todo.isDone = false; break 
+          }
+        }
       } else {
         e.target.classList.remove("bg-lime-500")
         e.target.classList.add("bg-blue-500")
@@ -90,17 +102,22 @@ function showTodoList (todayTodo, todayTodoList) {
             todo.isDone = true; break 
           }
         }
+        for (let todo of importantTodo) {
+          if (e.target.previousSibling.innerText === todo.content) {
+            todo.isDone = true; break 
+          }
+        }
       }
       e.target.previousSibling.classList.toggle("line-through")
-      importantTodo = todayTodo.filter((el) => el.isImportant === true)
+      importantTodo = todoes.filter((el) => el.isImportant === true)
     })
     newTodo.append(imgSpan, contentSpan, checkSpan)
-    todayTodoList.append(newTodo)
+    todoesList.append(newTodo)
   }
 }
 
 showTodoList(todayTodo, todayTodoList)
-showTodoList(importantTodo, importantTodoList)
+// showTodoList(importantTodo, importantTodoList)
 
 todoAddBtn.addEventListener("click", () => {
   if (todoAddForm.classList.contains("flex")) {
@@ -154,6 +171,8 @@ navBtn.forEach((el) => {
       important.style.display = "none"
       calendar.style.display = "none"
       today.style.display = "flex"
+      blankList(todayTodoList)
+      showTodoList(todayTodo, todayTodoList)
     } else if (tab === "IMPORTANT") {
       important.style.display = "flex"
       calendar.style.display = "none"
