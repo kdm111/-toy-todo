@@ -19,13 +19,13 @@ class Todo {
     this.date = date.getDate()
   }
 }
-
+const thisTime = new Date()
 const todo1 = new Todo("잘 자기", true)
-todo1.year = 2023; todo1.month = 8; todo1.date = 4
+todo1.year = thisTime.getFullYear(); todo1.month = thisTime.getMonth()+1; todo1.date = thisTime.getDate()
 const todo2 = new Todo("밥 먹기", false)
-todo2.year = 2023; todo2.month = 8; todo2.date = 5
+todo2.year = thisTime.getFullYear(); todo2.month = thisTime.getMonth()+1; todo2.date = thisTime.getDate() - 1
 const todo3 = new Todo("출근하기", true, true)
-todo3.year = 2023; todo3.month = 8; todo3.date = 3
+todo3.year = thisTime.getFullYear(); todo3.month = thisTime.getMonth()+1; todo3.date = thisTime.getDate() + 1
 
 
 let todayTodo = []
