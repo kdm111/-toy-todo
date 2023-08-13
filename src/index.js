@@ -1,13 +1,34 @@
 const today = document.querySelector("#todayMain")
 const important = document.querySelector("#importantMain")
-const calendar = document.querySelector("#calenderMain")
+const calendarMain = document.querySelector("#calenderMain")
+const calendar = document.querySelector("#calendarTable")
 const todoAddBtn = document.querySelector("#todoAddBtn")
 const todoAddForm = document.querySelector("#todoAddForm")
 const todoAddInput = document.querySelector("#todoAddInput")
 const todayTodoList = document.querySelector("#todayTodoList")
 const importantTodoList = document.querySelector("#importantTodoList")
 const checkImportant = document.querySelector("#checkImportant")
+const prevCalendarBtn = document.querySelector("#prevCalendarBtn")
+const nextCalendarBtn = document.querySelector("#nextCalendarBtn")
+const monthName = document.querySelector("#monthName")
+let currMonth = new Date().getMonth() + 1
+let prevCalendarSpace = 2
+let nextCalendarSpace = 2 
 
+const calendarMonth = {
+  1 : {name : "january", days : 31},
+  2 : {name : "february", days : 28},
+  3 : {name : "march", days : 31},
+  4 : {name : "april", days : 30},
+  5 : {name : "may", days : 31},
+  6 : {name : "june", days : 30},
+  7 : {name : "july", days : 31},
+  8 : {name : "august", days : 31},
+  9 : {name : "september", days : 30},
+  10 : {name : "october", days : 31},
+  11 : {name : "november", days : 30},
+  12 : {name : "december", days : 31}
+}
 class Todo {
   constructor(content , isImportant, isDone) {
     this.content = content
@@ -36,7 +57,7 @@ let importantTodo = todayTodo.filter((el)=> {
 
 todoAddForm.style.display = "none"
 important.style.display = "none"
-calendar.style.display = "none"
+calendarMain.style.display = "none"
 
 
 const todoStyle = ["w-11/12" ,"bg-white", "list-none", "p-0", "m-5", "text-3xl", "flex", "items-center", "p-5", "rounded-xl"]
@@ -169,23 +190,75 @@ navBtn.forEach((el) => {
     const tab = el.target.innerText
     if (tab === "TODAY") {
       important.style.display = "none"
-      calendar.style.display = "none"
+      calendarMain.style.display = "none"
       today.style.display = "flex"
       blankList(todayTodoList)
       showTodoList(todayTodo, todayTodoList)
     } else if (tab === "IMPORTANT") {
       important.style.display = "flex"
-      calendar.style.display = "none"
+      calendarMain.style.display = "none"
       today.style.display = "none"
       blankList(importantTodoList)
       showTodoList(importantTodo, importantTodoList)
     } else if (tab === "CALENDAR") {
       important.style.display = "none"
-      calendar.style.display = "flex"
+      calendarMain.style.display = "flex"
       today.style.display = "none"
+      currMonth = new Date().getMonth() + 1
+      blankCalendar()
+      createCalendar(String(currMonth))
     }
   })
 })
 
+function blankCalendar() {
+  let len = calendar.childNodes.length
+  for (let i = 0; i < len; i++) {
+    const node = calendar.childNodes[i]
+    const tdLen = node.childNodes.length
+    let j = 0
+    while (j < tdLen) {
+      node.firstChild.remove()
+      j += 1
+    }
+  }
+}
+function createCalendar(currMonth) {
+  const days =  calendarMonth[currMonth].days
+  let newTr = document.createElement("tr")
+  for (let i = 1; i < days+1; i++) {
+      const newTd = document.createElement("td")
+      if (newTr.childElementCount == 7) {
+        calendar.append(newTr)
+        newTr = document.createElement("tr")
+      }
+      newTd.innerText = i
+      newTr.append(newTd)
+    }
+  calendar.append(newTr)
+  while (newTr.childNodes.length != 7) {
+    const newTd = document.createElement("td")
+    newTr.append(newTd)
+  }
+  calendar.append(newTr)
+}
+
+
+prevCalendarBtn.addEventListener("click", () => {
+  blankCalendar(); currMonth -= 1
+  if (currMonth == 0) {
+    currMonth = 12
+  }
+  monthName.innerText = calendarMonth[currMonth].name
+  createCalendar(currMonth)
+})
+nextCalendarBtn.addEventListener("click", () => {
+  blankCalendar(); currMonth += 1
+  if (currMonth == 13) {
+    currMonth = 1
+  }
+  monthName.innerText = calendarMonth[currMonth].name
+  createCalendar(currMonth)
+})
 
 
