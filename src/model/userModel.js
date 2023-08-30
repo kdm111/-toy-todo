@@ -1,4 +1,5 @@
 const mysql = require("mysql")
+const { editUser } = require("../controller/userController")
 const conn = mysql.createConnection({
   host : "localhost",
   user : "user",
@@ -46,16 +47,15 @@ exports.createUser = (data, callBack) => {
 
 exports.loginUser = (data, callBack) => {
   const {userid, pw} = data
+  
   conn.query(`
     SELECT * FROM user
     WHERE userid = "${userid}";
   `, (err, rows) => {
-    if (err)
-      throw (err);
+    console.log(rows)
     callBack(rows)
   })
 }
-
 
 exports.getUser = (id, callBack) => {
   conn.query(`
@@ -65,5 +65,27 @@ exports.getUser = (id, callBack) => {
     if (err)
       throw (err);
     callBack(rows);
+  })
+}
+
+exports.editUser = (data, callBack) => {
+  conn.query(`
+    UPDATE user
+    SET name = "${data.name}", pw = "${data.pw}"
+    WHERE userid = "${data.userid}";
+  `, (err, rows) => {
+    if (err)
+      throw (err);
+    callBack()
+  })
+}
+exports.deleteUser = (data, callBack) => {
+  conn.query(`
+    DELETE FROM user
+    WHERE userid = "${data.userid}";
+  `, (err, rows) => {
+    if (err)
+      throw (err);
+    callBack()
   })
 }

@@ -29,12 +29,23 @@ exports.createUser = (req, res) => {
 
 exports.loginUser = (req, res) => {
   userModel.loginUser(req.body, (response) => {
-    if (req.body.pw === response[0].pw) {
+    if (response.length && req.body.pw === response[0].pw) {
       res.json({isLogin : true, userid : response[0].userid, id : response[0].id})
     } else{
       res.json({isLogin : false})
     }
   })
+}
+exports.editUser = (req, res) => {
+  userModel.editUser(req.body, () => {
+    res.json({editUser : true})
+  })
+}
+exports.deleteUser = (req, res) => {
+  userModel.deleteUser(req.body, () => {
+    res.json({deleteUser : true})
+  })
+
 }
 
 exports.signup = (req, res) => {
