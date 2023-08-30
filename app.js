@@ -1,10 +1,16 @@
 const express = require("express")
 const app = express()
 const PORT = 8080
+const db = require("./models")
 const router = require("./routes/index.js")
 
-app.listen(PORT, (req, res) => {
-  console.log(`${PORT} listening`)
+db.sequelize.sync(
+  {force : false}
+)
+.then(() => {
+  app.listen(PORT, () => {
+    console.log(`${PORT} listening`)
+  })
 })
 
 app.set("view engine", "ejs")

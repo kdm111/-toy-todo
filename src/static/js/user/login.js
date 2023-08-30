@@ -9,12 +9,10 @@ async function login () {
     url : "/login/user",
     data : data
   })
-  if (response.data.isLogin) {
-    alert (`${response.data.userid}님 환영합니다.`)
-    location.href = `/user/${response.data.id}`
+  if (response.status === 200) {
+    location.href = `/user/1`
   } else {
     alert (`아이디 혹은 비밀번호를 확인해주세요`)
   }
-  
 }
 

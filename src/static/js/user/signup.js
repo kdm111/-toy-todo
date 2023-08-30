@@ -22,15 +22,15 @@ async function checkUserId() {
   const data = {
     userid : form.userid.value
   }
-  const result = await axios({
-    method : "post",
-    url : "/check/userid",
-    data : data
-  })
   const checkUserIdResult = document.querySelector("#checkUserIdResult")
-  if (!result.data.value) {
+  try {
+    await axios({
+      method : "post",
+      url : "/check/userid",
+      data : data
+    })
     checkUserIdResult.innerHTML = "사용가능한 아이디입니다.<br>"
-  } else {
+  } catch (error) {
     checkUserIdResult.innerHTML = "사용불가능한 아이디입니다.<br>"
   }
 }
