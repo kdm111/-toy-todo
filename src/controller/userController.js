@@ -26,6 +26,17 @@ exports.createUser = (req, res) => {
     res.send({user : response})
   })
 }
+
+exports.loginUser = (req, res) => {
+  userModel.loginUser(req.body, (response) => {
+    if (req.body.pw === response[0].pw) {
+      res.json({isLogin : true, userid : response[0].userid, id : response[0].id})
+    } else{
+      res.json({isLogin : false})
+    }
+  })
+}
+
 exports.signup = (req, res) => {
   res.render("./user/signup")
 }

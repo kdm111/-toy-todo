@@ -44,6 +44,18 @@ exports.createUser = (data, callBack) => {
   })
 }
 
+exports.loginUser = (data, callBack) => {
+  const {userid, pw} = data
+  conn.query(`
+    SELECT * FROM user
+    WHERE userid = "${userid}";
+  `, (err, rows) => {
+    if (err)
+      throw (err);
+    callBack(rows)
+  })
+}
+
 
 exports.getUser = (id, callBack) => {
   conn.query(`
