@@ -11,10 +11,8 @@ function editUser() {
       url : "/user",
       data : data
     })
-    .then((response) => {
-      if (response.data.editUser) {
-        alert("수정되었습니다.")
-      }
+    .then(() => {
+      alert("회원정보 수정이 완료되었습니다.") 
     })
   }
 }

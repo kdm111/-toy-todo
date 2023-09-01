@@ -71,8 +71,17 @@ exports.loginUser = (req, res) => {
 
 }
 exports.editUser = (req, res) => {
-  userModel.editUser(req.body, () => {
-    res.json({editUser : true})
+  // userModel.editUser(req.body, () => {
+  //   res.json({editUser : true})
+  // })
+  userModel.update({
+    name : req.body.name,
+    pw : req.body.pw
+  }, {
+    where : {userid : req.body.userid}
+  })
+  .then(() => {
+    res.status(201).send()
   })
 }
 exports.deleteUser = (req, res) => {
