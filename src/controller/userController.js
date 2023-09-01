@@ -7,18 +7,22 @@ exports.index = (req, res) => {
 exports.login = (req, res) => {
   res.render("./user/login")
 }
-exports.user = (req, res) => {
+exports.user = async (req, res) => {
 
   // userModel.getUser(req.params.id, (response) => {
   //   res.render("./user/user", {user : response[0]})
   // })
-
-  userModel.findOne({
-    where : {id : req.params.id}
-  })
-  .then((response) => {
+  try {
+    const response = await userModel.findOne({
+      where : {id : req.params.id}
+    })
+    console.ki
+    if (!response)
+      throw error()
     res.render("./user/user", {user : response.dataValues})
-  })
+  } catch {
+    res.render("404")
+  }
 }
 
 exports.checkUserId = (req, res) => {
@@ -58,7 +62,6 @@ exports.loginUser = (req, res) => {
     where : {userid : req.body.userid}
   })
   .then((response) => {
-    console.log(response)
     if (response === null) {
       res.status(401).json()
     } else {
@@ -74,8 +77,15 @@ exports.editUser = (req, res) => {
   })
 }
 exports.deleteUser = (req, res) => {
-  userModel.deleteUser(req.body, () => {
-    res.json({deleteUser : true})
+  // userModel.deleteUser(req.body, () => {
+  //   res.json({deleteUser : true})
+  // })
+
+  userModel.destroy({
+    where : {userid : req.body.userid}
+  })
+  .then((response) => {
+    console.log(response)
   })
 
 }

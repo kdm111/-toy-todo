@@ -13,5 +13,4 @@ router.delete("/user", userController.deleteUser)
 router.post("/check/userid", userController.checkUserId)
 router.get("/signup", userController.signup)
 
-
 module.exports= router
