@@ -1,0 +1,6 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background : url("/img/signupPage.jpg") no-repeat center;
+    background-size: cover;
+}
