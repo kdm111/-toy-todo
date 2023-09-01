@@ -2,7 +2,8 @@ const express = require("express")
 const app = express()
 const PORT = 8080
 const db = require("./models")
-const router = require("./routes/index.js")
+const userRouter = require("./routes/userRouter.js")
+const todoRouter = require("./routes/todoRouter.js")
 
 db.sequelize.sync(
   {force : false}
@@ -21,7 +22,9 @@ app.use(express.static(__dirname + "/src/static"))
 app.use(express.urlencoded({extended : true}))
 app.use(express.json())
 
-app.use("/", router)
+app.use("/todo", todoRouter)
+app.use("/", userRouter)
+
 app.get("/404", (req, res) => {
   res.render("404")
 })

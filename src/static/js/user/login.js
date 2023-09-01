@@ -10,7 +10,8 @@ async function login () {
       url : "/login/user",
       data : data
     })
-    location.href = `/user/${response.data.id}`
+    // location.href = `/user/${response.data.id}`
+    location.href = `/todo/main/`
   } catch {
     alert (`아이디 혹은 비밀번호를 확인해주세요`)
   }

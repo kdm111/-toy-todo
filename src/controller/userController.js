@@ -8,10 +8,6 @@ exports.login = (req, res) => {
   res.render("./user/login")
 }
 exports.user = async (req, res) => {
-
-  // userModel.getUser(req.params.id, (response) => {
-  //   res.render("./user/user", {user : response[0]})
-  // })
   try {
     const response = await userModel.findOne({
       where : {id : req.params.id}
@@ -25,14 +21,6 @@ exports.user = async (req, res) => {
 }
 
 exports.checkUserId = (req, res) => {
-  // userModel.checkUserId(req.body.userid, (response) => {
-  //   if (response.length) {
-  //     res.json({value : true})
-  //   } else {
-  //     res.json({value : false})
-  //   }
-  // })
-
   userModel.findOne({
     where : {userid : req.body.userid}
   })
@@ -51,12 +39,6 @@ exports.createUser = (req, res) => {
 }
 
 exports.loginUser = (req, res) => {
-  // userModel.loginUser(req.body, (response) => {
-  //   if (response.length && req.body.pw === response[0].pw) {
-  //     res.json({isLogin : true, userid : response[0].userid, id : response[0].id})
-  //   } else{
-  //     res.json({isLogin : false})
-  //   }
   userModel.findOne({
     where : {userid : req.body.userid}
   })
@@ -71,9 +53,6 @@ exports.loginUser = (req, res) => {
 
 }
 exports.editUser = (req, res) => {
-  // userModel.editUser(req.body, () => {
-  //   res.json({editUser : true})
-  // })
   userModel.update({
     name : req.body.name,
     pw : req.body.pw
@@ -85,10 +64,6 @@ exports.editUser = (req, res) => {
   })
 }
 exports.deleteUser = (req, res) => {
-  // userModel.deleteUser(req.body, () => {
-  //   res.json({deleteUser : true})
-  // })
-
   userModel.destroy({
     where : {userid : req.body.userid}
   })
