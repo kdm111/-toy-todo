@@ -4,14 +4,14 @@ async function login () {
     userid : form.userid.value,
     pw : form.password.value
   }
-  const response = await axios({
-    method : "post",
-    url : "/login/user",
-    data : data
-  })
-  if (response.status === 200) {
-    location.href = `/user/1`
-  } else {
+  try {
+    const response = await axios({
+      method : "post",
+      url : "/login/user",
+      data : data
+    })
+    location.href = `/user/${response.data.id}`
+  } catch {
     alert (`아이디 혹은 비밀번호를 확인해주세요`)
   }
 }

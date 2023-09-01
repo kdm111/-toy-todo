@@ -48,13 +48,25 @@ exports.createUser = (req, res) => {
 }
 
 exports.loginUser = (req, res) => {
-  userModel.loginUser(req.body, (response) => {
-    if (response.length && req.body.pw === response[0].pw) {
-      res.json({isLogin : true, userid : response[0].userid, id : response[0].id})
-    } else{
-      res.json({isLogin : false})
+  // userModel.loginUser(req.body, (response) => {
+  //   if (response.length && req.body.pw === response[0].pw) {
+  //     res.json({isLogin : true, userid : response[0].userid, id : response[0].id})
+  //   } else{
+  //     res.json({isLogin : false})
+  //   }
+  userModel.findOne({
+    where : {userid : req.body.userid}
+  })
+  .then((response) => {
+    console.log(response)
+    if (response === null) {
+      res.status(401).json()
+    } else {
+      const {id} = response.dataValues
+      res.status(200).json({id})
     }
   })
+
 }
 exports.editUser = (req, res) => {
   userModel.editUser(req.body, () => {
