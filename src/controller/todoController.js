@@ -1,4 +1,5 @@
+
 exports.todoMain = (req, res) => {
-  console.log("1")
-  res.render("./todo/todoMain")
+  const {id} = req.params
+  res.render("./todo/todoMain", { user : id })
 }
