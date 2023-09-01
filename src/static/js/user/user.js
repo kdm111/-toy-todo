@@ -29,11 +29,9 @@ function deleteUser() {
       url : "/user",
       data : data
     })
-    .then((response) => {
-      if (response.data.deleteUser) {
-        alert("탈퇴되었습니다.")
-        location.href = "/"
-      }
+    .then(() => {
+      alert("탈퇴되었습니다.")
+      location.href = "/"
     })
   }
 }

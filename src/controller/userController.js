@@ -16,7 +16,6 @@ exports.user = async (req, res) => {
     const response = await userModel.findOne({
       where : {id : req.params.id}
     })
-    console.ki
     if (!response)
       throw error()
     res.render("./user/user", {user : response.dataValues})
@@ -84,8 +83,8 @@ exports.deleteUser = (req, res) => {
   userModel.destroy({
     where : {userid : req.body.userid}
   })
-  .then((response) => {
-    console.log(response)
+  .then(() => {
+    res.status(204).send()
   })
 
 }
