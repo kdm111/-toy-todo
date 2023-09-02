@@ -46,8 +46,8 @@ exports.loginUser = (req, res) => {
     if (response === null) {
       res.status(401).json()
     } else {
-      const {id} = response.dataValues
-      res.status(200).json({id})
+      const {id, name} = response.dataValues
+      res.status(200).json({id : id, name : name})
     }
   })
 
