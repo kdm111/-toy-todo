@@ -187,5 +187,10 @@ navBtn.forEach((el) => {
   })
 })
 
-
+async function checkCookie() {
+  axios({
+    method : "get",
+    url : "/todo/check/cookie",
+  })
+}
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tailwind demo</title>
+    <title><%- name %></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/todo/todoMain.css">
   </head>
@@ -13,6 +13,7 @@
         <div class="text-center my-20">
           <div class="rounded-full p-10 bg-white h-11/12 w-11/12 my-5">
           </div>
+          <button onclick="checkCookie()">setcookie</button>
           <span ><%- name %></span>
         </div>
         <nav class="flex my-10 flex-col items-center justify-center text-3xl font-mono uppercase">
@@ -152,6 +153,7 @@
         </section>
       </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/todo/todoMain.js"></script>
   </body>
 </html>

@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const PORT = 8080
 const db = require("./models")
+const cookieParser = require("cookie-parser")
 const userRouter = require("./routes/userRouter.js")
 const todoRouter = require("./routes/todoRouter.js")
 
@@ -21,6 +22,9 @@ app.use(express.static(__dirname + "/src/static"))
 
 app.use(express.urlencoded({extended : true}))
 app.use(express.json())
+
+const SECRET_KEY = "123"
+app.use(cookieParser(SECRET_KEY))
 
 app.use("/todo", todoRouter)
 app.use("/", userRouter)
