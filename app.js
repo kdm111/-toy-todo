@@ -1,4 +1,5 @@
 const express = require("express")
+const session = require("express-session")
 const app = express()
 const PORT = 8080
 const db = require("./models")
@@ -14,6 +15,7 @@ db.sequelize.sync(
     console.log(`${PORT} listening`)
   })
 })
+
 
 app.set("view engine", "ejs")
 app.set("views", "./src/views")
